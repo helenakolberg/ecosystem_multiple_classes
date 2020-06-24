@@ -29,14 +29,28 @@ class BearTest < MiniTest::Test
         assert_equal(0, @bear.how_many_foods)
     end
 
-    def test_bear_gets_fish()
-        @bear.put_food_in_stomach(@fish1)
-        @bear.put_food_in_stomach(@fish2)
-        @river.remove_fish(@fish1)
-        @river.remove_fish(@fish2)
-        assert_equal(2, @bear.how_many_foods())
-        assert_equal(1, @river.count_fish())
+    # def test_bear_gets_fish()
+    #     @bear.put_food_in_stomach(@fish1)
+    #     @bear.put_food_in_stomach(@fish2)
+    #     @river.remove_fish(@fish1)
+    #     @river.remove_fish(@fish2)
+    #     assert_equal(2, @bear.how_many_foods())
+    #     assert_equal(1, @river.count_fish())
+    # end
+
+    def test_bear_can_take_fish()
+        @bear.take_fish_from_river(@river)
+        assert_equal(1, @bear.how_many_foods())
+        assert_equal(2, @river.count_fish())
     end
+
+    def test_bear_cannot_take_fish()
+        river = River.new("Tay", [])
+        @bear.take_fish_from_river(river)
+        assert_equal(0, @bear.how_many_foods())
+        assert_equal(0, river.count_fish())
+    end
+
 
     def test_bear_roars()
         assert_equal("ROAR", @bear.roar())

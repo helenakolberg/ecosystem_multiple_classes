@@ -12,8 +12,12 @@ class River
         return @inhabitants.length
     end
 
-    def remove_fish(name)
-        return @inhabitants.delete(name)
+    # def remove_fish(name)
+    #     return @inhabitants.delete(name)
+    # end
+
+    def get_fish()
+        return @inhabitants.pop
     end
 
 
