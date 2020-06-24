@@ -23,9 +23,14 @@ class RiverTest < MiniTest::Test
         assert_equal(3, @river.count_fish())
     end
 
-    def test_remove_fish()
-        @river.remove_fish(@fish1)
-        assert_equal(2, @river.count_fish())
+    # def test_remove_fish()
+    #     @river.remove_fish(@fish1)
+    #     assert_equal(2, @river.count_fish())
+    # end
+
+    def test_get_fish_from_river()
+        fish = @river.get_fish()
+        assert_equal("Laura", fish.name)
     end
 
 end
